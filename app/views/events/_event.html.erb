@@ -1,0 +1,13 @@
+<li id="event-<%= event.id %>">
+  <span class="user">
+  	<%= link_to event.title, event %>
+  </span>
+	<span class="content">
+		<p><%= event.description %></p>
+		Date: <%= event.date.in_time_zone("Chennai").strftime("%d-%m-%Y") %><br>
+		<h3>Event by: <%= link_to event.creator.name, event.creator %> </h3>
+	</span>
+  <span class="timestamp">
+    Posted <%= time_ago_in_words(event.created_at) %> ago.
+  </span>
+</li>

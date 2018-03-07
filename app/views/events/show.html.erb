@@ -1,0 +1,11 @@
+<% provide(:title, @event.title) %>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <h1><%= @event.title %></h1>
+      <h3> Date: <%= event.event_date%>
+      <h3><%= @event.description %></h3>
+      <h3>Created by: <%= link_to @event.creator.name, @event.creator %>
+    </section>
+  </aside>
+</div>
