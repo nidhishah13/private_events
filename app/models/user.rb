@@ -1,6 +1,8 @@
 class User < ApplicationRecord
 
-  has_many :events, class_name: "Event", dependent: :destroy #foreign_key: "creator_id"
+  has_many :events, class_name: "Event", foreign_key: "user_id", dependent: :destroy
+  has_many :attendances, class_name: "Attendance", foreign_key: "attendee_id"
+  has_many :attended_events, through: :attendances, source: :attended
 
   attr_accessor :remember_token
 	before_save { email.downcase! }

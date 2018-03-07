@@ -2,8 +2,20 @@
 <h1>All events</h1>
 
 <ul class="users">
-  <% @events.each do |event| %>
-    <%= render @events%>
+  <h2>Upcoming events</h2>
+  <% if @events.upcoming.any? %>
+    <% @events.upcoming.each do |uevents| %>
+      <%= link_to uevents.title, uevents%>  
+    <% end %>
+  <% else %>
+      No upcoming events
+  <% end %>
+  <h2>Previous events</h2>
+  <%if @events.past.any? %>
+    <% @events.past.each do |pevents| %>
+      <%= link_to pevents.title, pevents %>
+    <% end %>
+  <% else %>  
+    No previous events
   <% end %>
 </ul>
-
