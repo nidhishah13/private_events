@@ -1,0 +1,13 @@
+<% if @event.event_date > Date.today %>
+  <div id="follow_form">
+    <% if current_user.attended?(@event) %>
+      <%= render 'will_not_attend' %>
+    <% else %>  
+      <%= render 'will_attend' %>
+    <% end %>
+  </div>
+<% else %>
+  You cannot attend this event  
+<% end %>
+
+ 

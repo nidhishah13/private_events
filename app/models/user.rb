@@ -2,7 +2,7 @@ class User < ApplicationRecord
 
   has_many :events, class_name: "Event", foreign_key: "user_id", dependent: :destroy
   has_many :attendances, class_name: "Attendance", foreign_key: "attendee_id"
-  has_many :attended_events, through: :attendances, source: :attended
+  has_many :attended_events, through: :attendances, source: :attended, dependent: :destroy
 
   attr_accessor :remember_token
 	before_save { email.downcase! }
@@ -43,4 +43,17 @@ class User < ApplicationRecord
   def forget
     update_attribute(:remember_digest, nil)
   end
+
+  # def attend(event)
+  #   attendances.create(attended_id: event.id)
+  # end
+
+  # def not_attend(event)
+  #   attended_events.delete(event)
+  # end
+
+  def attended?(uevent)
+    attended_events.include?(uevent)
+  end
+
 end

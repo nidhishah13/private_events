@@ -1,13 +1,19 @@
-<li id="event-<%= event.id %>">
+<li id="event-<%= @event.id %>">
   <span class="user">
-  	<%= link_to event.title, event %>
+  	<h3><%= event.title %></h3>
   </span>
 	<span class="content">
-		<p><%= event.description %></p>
 		Date: <%= event.event_date.in_time_zone("Chennai").strftime("%d-%m-%Y") %><br>
-		<h4>Event by: <%= link_to event.creator.name, event.creator %> </h4>
+		<p><%= event.description %></p>
+		Event by: <%= link_to event.creator.name, event.creator %>
 	</span>
   <span class="timestamp">
-    Posted <%= time_ago_in_words(event.created_at) %> ago.
+		Posted <%= time_ago_in_words(event.created_at) %> ago.
+		<% if current_user?(event.creator) %>
+			<% if event.event_date >= Date.today %> 
+				<%= link_to "delete", event, method: :delete,
+																				data: { confirm: "You sure?" } %>
+			<% end %>																	 
+    <% end %>
   </span>
 </li>

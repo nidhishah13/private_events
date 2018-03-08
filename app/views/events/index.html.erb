@@ -3,16 +3,16 @@
 
 <ul class="users">
   <h2>Upcoming events</h2>
-  <% if @events.upcoming.any? %>
-    <% @events.upcoming.each do |uevents| %>
+  <% if @upcoming_events.any? %>
+    <% @upcoming_events.each do |uevents| %>
       <%= link_to uevents.title, uevents%>  
     <% end %>
   <% else %>
       No upcoming events
   <% end %>
   <h2>Previous events</h2>
-  <%if @events.past.any? %>
-    <% @events.past.each do |pevents| %>
+  <%if @past_events.any? %>
+    <% @past_events.each do |pevents| %>
       <%= link_to pevents.title, pevents %>
     <% end %>
   <% else %>  

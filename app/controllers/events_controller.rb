@@ -3,9 +3,11 @@ class EventsController < ApplicationController
 
 	def index
 		@events = Event.all
+		@upcoming_events = @events.upcoming
+		@past_events = @events.past
 	end
 
-	def show 
+	def show
 		@event = Event.find(params[:id])
 	end
 
@@ -24,7 +26,26 @@ class EventsController < ApplicationController
 		end
 	end	
 
+	def edit
+    @event = Event.find(params[:id]) 
+  end
+
+  def update
+    @event = Event.find(params[:id])
+    if @event.update_attributes(event_params)
+      flash[:success] = "Event details updated"
+      redirect_to @event
+      # Handle a successful update.
+    else
+      render 'edit'
+    end
+  end
+
 	def destroy
+		#@event.destroy
+		Event.find(params[:id]).destroy
+		flash[:success] = "Event deleted"
+		redirect_to root_url
 	end
 
 	private
@@ -32,4 +53,5 @@ class EventsController < ApplicationController
 		def event_params
 			params.require(:event).permit(:title, :description, :event_date, :user_id)
 		end
+
 end
