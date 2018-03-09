@@ -1,4 +1,4 @@
-<% if @event.event_date > Date.today %>
+<% if @event.event_date > Time.now %>
   <div id="follow_form">
     <% if current_user.attended?(@event) %>
       <%= render 'will_not_attend' %>

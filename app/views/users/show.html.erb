@@ -14,7 +14,7 @@
   <% if @user.attended_events.any? %>
     <h4> <%= @user.attended_events.count %> events attended </h4>
     <% @user.attended_events.each do |attended| %>
-      <%= link_to attended.title, attended%>
+      <%= link_to attended.title, attended%><br>
     <% end %>
   <% else %>
     attended no events
@@ -24,7 +24,7 @@
   <h2>Upcoming events</h2>
   <% if @upcoming_events.any? %>
     <% @upcoming_events.each do |uevents| %>
-      <%= link_to uevents.title, uevents %>
+      <%= link_to uevents.title, uevents %><br>
     <% end %>
   <% end %>
 </div>
@@ -32,7 +32,7 @@
   <h2>Previous events</h2>
   <% if @prev_events.any? %>
     <% @prev_events.each do |pevents| %>
-      <%= link_to pevents.title, pevents %>
+      <%= link_to pevents.title, pevents %><br>
     <% end %>
   <% end %>
 </div>
