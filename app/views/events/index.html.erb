@@ -5,7 +5,7 @@
   <h2>Upcoming events</h2>
   <% if @upcoming_events.any? %>
     <% @upcoming_events.each do |uevents| %>
-      <%= link_to uevents.title, uevents%>  
+      <%= link_to uevents.title, uevents%><br>  
     <% end %>
   <% else %>
       No upcoming events
@@ -13,7 +13,7 @@
   <h2>Previous events</h2>
   <%if @past_events.any? %>
     <% @past_events.each do |pevents| %>
-      <%= link_to pevents.title, pevents %>
+      <%= link_to pevents.title, pevents %><br>
     <% end %>
   <% else %>  
     No previous events
