@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 20180307092726) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "attendances", force: :cascade do |t|
     t.integer "attendee_id"
     t.integer "attended_id"
@@ -28,7 +31,7 @@ ActiveRecord::Schema.define(version: 20180307092726) do
     t.datetime "event_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
+    t.bigint "user_id"
     t.index ["user_id"], name: "index_events_on_user_id"
   end
 
@@ -42,4 +45,5 @@ ActiveRecord::Schema.define(version: 20180307092726) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "events", "users"
 end
