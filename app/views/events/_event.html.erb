@@ -3,14 +3,14 @@
   	<h3><%= event.title %></h3>
   </span>
 	<span class="content">
-		Date: <%= event.event_date.in_time_zone("Chennai").strftime("%d-%m-%Y") %><br>
+		Date: <%= event.event_date.in_time_zone("Chennai").strftime("%d-%m-%Y %I:%M %p") %><br>
 		<p><%= event.description %></p>
 		Event by: <%= link_to event.creator.name, event.creator %>
 	</span>
   <span class="timestamp">
 		Posted <%= time_ago_in_words(event.created_at) %> ago.
 		<% if current_user?(event.creator) %>
-			<% if event.event_date >= Date.today %> 
+			<% if event.event_date >= Time.now %> 
 				<%= link_to "delete", event, method: :delete,
 																				data: { confirm: "You sure?" } %>
 			<% end %>																	 

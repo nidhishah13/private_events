@@ -18,6 +18,7 @@ class EventsController < ApplicationController
 	def create
 		@event = current_user.events.build(event_params)
 		if @event.save
+			@event.attendees << current_user
 			flash[:success] = "Event created!"
 			redirect_to current_user 
 		else

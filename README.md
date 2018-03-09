@@ -22,8 +22,3 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
-signup page done
-users#show is left yet
-header needs to be modified
-session controller created - create action and login page done
-ActionView::Template::Error (First argument in form cannot contain nil or be empty): is the last error i saw

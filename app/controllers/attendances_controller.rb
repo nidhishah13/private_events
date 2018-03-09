@@ -6,7 +6,7 @@ class AttendancesController < ApplicationController
     current_user.attendances.create(attended_id: @event.id)
     respond_to do |format|
       format.html { redirect_to @event }
-      format.js
+      format.js {render inline: "location.reload();" }
     end
   end
 
@@ -15,7 +15,7 @@ class AttendancesController < ApplicationController
     current_user.attended_events.delete(@event)
     respond_to do |format|
       format.html { redirect_to @event }
-      format.js
+      format.js {render inline: "location.reload();" }
     end
   end
 end
