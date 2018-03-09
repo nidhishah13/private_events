@@ -5,6 +5,7 @@ class Event < ApplicationRecord
 
   validates :title, presence: true, length: {maximum: 50}
   validates :description, length: {maximum: 140}
+  validates :event_date, presence: true
 
   default_scope-> {order(created_at: :desc)}
   scope :upcoming, -> { where('event_date >= ?', Time.now) }
