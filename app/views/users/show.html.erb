@@ -12,7 +12,7 @@
 <div class="users">
   <h2>Attended events</h2>
   <% if @user.attended_events.any? %>
-    <h4> <%= @user.attended_events.count %> events attended </h4>
+    <h4> <%= pluralize(@user.attended_events.count, "event") %> attended </h4>
     <% @user.attended_events.each do |attended| %>
       <%= link_to attended.title, attended%><br>
     <% end %>

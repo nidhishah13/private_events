@@ -3,7 +3,7 @@
   	<h3><%= event.title %></h3>
   </span>
 	<span class="content">
-		Date: <%= event.event_date.in_time_zone("Chennai").strftime("%d-%m-%Y %I:%M %p") %><br>
+		Date: <%= event.event_date.strftime("%d-%m-%Y %I:%M %p") %><br>
 		<p><%= event.description %></p>
 		Event by: <%= link_to event.creator.name, event.creator %>
 	</span>
